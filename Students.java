@@ -1,8 +1,10 @@
-import java.util.Random;
-import java.util.Scanner;
+
 import java.io.*;
+import java.awt.*;
+import java.util.*;
 
 public class Students {
+	private static String[] studentss;
 	public static void main(String[] args){
 		
 		String[] students;
@@ -10,7 +12,7 @@ public class Students {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Please enter the path of the list of students.");
 		path = s.nextLine();
-		students = loadFile(path);
+		students = loadFile(path, studentss);
 		System.out.println("Press 1 to choose a random student.");
 		System.out.println("Press 2 to choose a group of students.");
 		int num = s.nextInt();
@@ -50,21 +52,21 @@ public class Students {
 		}
 		
 	}
-	public static String[] loadFile(String path) {
+	public static String[] loadFile(String path, String[] student) {
 
 		
 		File a = new File(path);
 		Scanner scan;
-		String[] students;
+		
 		try {
 			scan = new Scanner(a);
-			students = scan.nextLine().split(",");
+			student = scan.nextLine().split(",");
 			
 		} catch(FileNotFoundException e) {
 			System.out.println("Could not load file at path: " + path);
 			System.exit(1);
 		}
-		return students;
+		return student;
 		
 	}
 }
