@@ -19,7 +19,7 @@ public class Students {
 		
 		
 		shuffle(students);
-		//int firstName = r.nextInt(students.length);
+		
 		if (num == 1) {
 			System.out.println(students[0]);
 		}
@@ -30,6 +30,12 @@ public class Students {
 			
 			for (int i = 0; i<students.length; i++) {
 				for (int x = 0; x<groupNum; x++) {
+					if (groupNum >= 17 && groupNum <= students.length) {
+						groupNum = 16;
+					} else if(groupNum > students.length){
+						System.out.println("There are not that many people in the class.");
+						System.exit(1);
+					}
 					System.out.println(students[name]);
 					name++;
 					if (name == students.length) {
@@ -61,7 +67,6 @@ public class Students {
 		try {
 			scan = new Scanner(a);
 			student = scan.nextLine().split(",");
-			
 		} catch(FileNotFoundException e) {
 			System.out.println("Could not load file at path: " + path);
 			System.exit(1);
